@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Enumerecoes_Composicao.Enumeracoes_Composicao.Entities
 {
@@ -42,5 +43,29 @@ namespace Enumerecoes_Composicao.Enumeracoes_Composicao.Entities
             }
             return sum;
         }
+
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("Order moment: " + Date);
+            sb.AppendLine("Order status: " + Status);
+            sb.AppendLine("Client: " + Client);
+            sb.AppendLine("Order items:");
+            
+            foreach(OrderItem item in Items)
+            {
+                sb.AppendLine(item.ToString());
+            }
+
+            sb.AppendLine("Total price: $" + Total().ToString());
+
+            return sb.ToString();
+
+
+
+        }
+
     }
 }
